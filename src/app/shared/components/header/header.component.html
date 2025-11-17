@@ -1,7 +1,101 @@
-<header class="w-full h-14 border-b border-gray-200">
-  <div class="">
-    <h1 class="text-2xl ">Shalom</h1>
+<header class="w-full h-14 border-b border-gray-200 flex justify-center bg-white sticky top-0 z-10">
+  <div class="w-full max-w-7xl flex justify-between items-center px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center gap-11">
+      <div class="flex items-center">
+        <img class="w-36" alt="Logo" src="assets/images/logo-shalom.png" />
+      </div>
+      <nav class="hidden lg:flex items-center">
+        <ul class="flex items-center gap-3">
+          <li
+            class="flex items-center gap-1 py-1 px-3 rounded-2xl text-[#3B485B] hover:cursor-pointer hover:bg-[#E0E2E5] transition duration-200 ease-in-out">
+            <lucide-icon [img]="HomeIcon" [strokeWidth]="1"></lucide-icon>
+            <a class="text-sm">Inicio</a>
+          </li>
+          <li
+            class="flex items-center gap-1 py-1 px-3 rounded-2xl text-[#3B485B] hover:cursor-pointer hover:bg-[#E0E2E5] transition duration-200 ease-in-out">
+            <lucide-icon [img]="SearchIcon" [strokeWidth]="1"></lucide-icon>
+            <a class="text-sm">Rastrear</a>
+          </li>
+          <li
+            class="flex items-center gap-1 py-1 px-3 rounded-2xl text-[#3B485B] hover:cursor-pointer hover:bg-[#E0E2E5] transition duration-200 ease-in-out">
+            <lucide-icon [img]="MapPinIcon" [strokeWidth]="1"></lucide-icon>
+            <a class="text-sm">Agencias</a>
+          </li>
+          <li
+            class="flex items-center gap-1 py-1 px-3 rounded-2xl text-[#3B485B] hover:cursor-pointer hover:bg-[#E0E2E5] transition duration-200 ease-in-out">
+            <lucide-icon [img]="ClipboardListIcon" [strokeWidth]="1"></lucide-icon>
+            <a class="text-sm">Servicios</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div class="flex items-center gap-2">
+      <div class="hidden lg:flex items-center gap-2">
+        <button
+          class="text-sm text-[#6A7587] py-2 px-4 border border-[#D2D5DB] rounded-3xl hover:cursor-pointer hover:shadow transition duration-200 ease-in-out">
+          Iniciar Sesion
+        </button>
+        <button
+          class="flex items-center text-sm text-white py-2 px-4 border rounded-3xl bg-[#EE2A2F] hover:cursor-pointer hover:bg-[#ff6267] transition duration-200 ease-in-out">
+          <lucide-icon [img]="UserRoundPlusIcon" [strokeWidth]="1"></lucide-icon>
+          Registrarse
+        </button>
+      </div>
+      <button class="lg:hidden p-2 rounded-lg hover:cursor-pointer hover:bg-gray-100" (click)="toggleMenu()">
+        <lucide-icon [img]="SquareMenuIcon" [strokeWidth]="1" class="w-6 h-6"></lucide-icon>
+      </button>
+    </div>
   </div>
-  <nav class=""></nav>
-  <div class=""></div>
+</header>
+
+<header class="lg:hidden fixed inset-0 z-40 transition-all duration-300" [class.visible]="isOpen()" [class.invisible]="!isOpen()">
+  <div class="fixed inset-0 bg-black transition-opacity duration-300" (click)="toggleMenu()" [class.opacity-30]="isOpen()" [class.opacity-0]="!isOpen()">
+  </div>
+
+  <div class="fixed top-0 right-0 w-64 h-full bg-white shadow-xl p-5
+               transition-transform duration-300 ease-in-out transform" [class.translate-x-0]="isOpen()"
+    [class.translate-x-full]="!isOpen()">
+
+    <button class="absolute top-4 right-4 p-2 rounded-lg hover:cursor-pointer hover:bg-gray-100" (click)="toggleMenu()">
+      <lucide-icon [img]="CircleXIcon" [strokeWidth]="1" class="w-6 h-6"></lucide-icon>
+    </button>
+
+    <h2 class="text-xl font-bold mb-6 mt-8">¿Que necesitas?</h2>
+
+    <nav>
+      <ul class="flex flex-col gap-2">
+        <li (click)="toggleMenu()"
+          class="flex items-center gap-2 py-2 px-3 rounded-lg text-[#3B485B] hover:cursor-pointer hover:bg-[#E0E2E5] transition duration-200 ease-in-out w-full">
+          <lucide-icon [img]="HomeIcon" [strokeWidth]="1" class="w-5 h-5"></lucide-icon>
+          <a class="text-sm font-medium">Inicio</a>
+        </li>
+        <li (click)="toggleMenu()"
+          class="flex items-center gap-2 py-2 px-3 rounded-lg text-[#3B485B] hover:cursor-pointer hover:bg-[#E0E2E5] transition duration-200 ease-in-out w-full">
+          <lucide-icon [img]="SearchIcon" [strokeWidth]="1" class="w-5 h-5"></lucide-icon>
+          <a class="text-sm font-medium">Rastrear</a>
+        </li>
+        <li (click)="toggleMenu()"
+          class="flex items-center gap-2 py-2 px-3 rounded-lg text-[#3B485B] hover:cursor-pointer hover:bg-[#E0E2E5] transition duration-200 ease-in-out w-full">
+          <lucide-icon [img]="MapPinIcon" [strokeWidth]="1" class="w-5 h-5"></lucide-icon>
+          <a class="text-sm font-medium">Agencias</a>
+        </li>
+        <li (click)="toggleMenu()"
+          class="flex items-center gap-2 py-2 px-3 rounded-lg text-[#3B485B] hover:cursor-pointer hover:bg-[#E0E2E5] transition duration-200 ease-in-out w-full">
+          <lucide-icon [img]="ClipboardListIcon" [strokeWidth]="1" class="w-5 h-5"></lucide-icon>
+          <a class="text-sm font-medium">Servicios</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="flex flex-col gap-3 mt-8 pt-6 border-t border-gray-200">
+      <button
+        class="text-sm text-[#6A7587] py-2 px-4 border border-[#D2D5DB] rounded-3xl hover:cursor-pointer hover:shadow transition duration-200 ease-in-out w-full">
+        Iniciar Sesion
+      </button>
+      <button
+        class="text-sm text-white py-2 px-4 border rounded-3xl bg-[#EE2A2F] hover:cursor-pointer hover:bg-[#ff6267] transition duration-200 ease-in-out w-full">
+        Registrarse
+      </button>
+    </div>
+  </div>
 </header>
