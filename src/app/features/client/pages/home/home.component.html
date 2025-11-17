@@ -1,3 +1,57 @@
 <main class="w-full">
   <client-header></client-header>
+  <client-banner></client-banner>
+  <section class="w-full flex justify-center px-4 sm:px-6 lg:px-8 py-8">
+    <div class="w-full flex flex-col lg:flex-row max-w-7xl">
+
+      <div class="flex flex-col gap-4 w-full h-56 lg:w-1/3 shrink-0 lg:shrink lg:basis-1/3 p-4 lg:p-0">
+        <span class="text-sm text-[#6982a3] font-bold mb-8">SERVICIOS</span>
+        <h2 class="text-4xl text-[#313131] font-bold">!Conoce nuestros todos nuestros servicios¡</h2>
+        <button
+          class="flex items-center gap-1 py-2 px-4 rounded-2xl max-w-3/4 text-[#EE2A2F] hover:cursor-pointer hover:bg-[#E0E2E5] transition duration-200 ease-in-out">
+          <a class="text-sm">Ver mas Servicios</a>
+          <lucide-icon [img]="ArrowRightIcon" [strokeWidth]="1"></lucide-icon>
+        </button>
+      </div>
+
+      <div class="flex flex-col sm:flex-row flex-1 gap-8 mt-6 lg:mt-0">
+
+        <div class="relative flex items-end flex-1 h-48 sm:h-full bg-[url('/assets/images/servicio-terrestre.jpg')] bg-cover bg-center rounded-lg shadow-md overflow-hidden group hover:cursor-pointer
+                    transition duration-300 ease-in-out hover:scale-105 hover:shadow-xl">
+          <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-50 transition duration-300 ease-in-out">
+          </div>
+          <div class="relative z-10 flex flex-col items-start text-white text-3xl font-bold p-4">
+            <span class="text-[10px] bg-red-500 py-2 px-4 rounded-lg">Contraentrega</span>
+            <span class="text-xl text-shadow-2xs">Envios terrestres</span>
+            <div class="flex items-center">
+              <span class="text-[12px] text-gray-200">Solicitalo a varios destinos locales y nacionales</span>
+              <lucide-icon [img]="ArrowRightIcon" [strokeWidth]="1"></lucide-icon>
+            </div>
+          </div>
+        </div>
+
+        <div class="relative flex items-end flex-1 h-48 sm:h-full bg-[url('/assets/images/servicio-aereo.jpg')] bg-cover bg-center rounded-lg shadow-md overflow-hidden group hover:cursor-pointer
+                    transition duration-300 ease-in-out hover:scale-105 hover:shadow-xl">
+          <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-50 transition duration-300 ease-in-out">
+          </div>
+          <div class="relative z-10 flex flex-col items-start text-white text-3xl font-bold p-4">
+            <span class="text-[10px] bg-red-500 py-2 px-4 rounded-lg">Contraentrega</span>
+            <span class="text-xl text-shadow-2xs">Envios aéreos</span>
+            <span class="text-[12px] text-gray-200">Realiza envios via aerea de manera segura</span>
+          </div>
+        </div>
+
+        <div class="relative flex items-end flex-1 h-48 sm:h-full bg-[url('/assets/images/servicio-domicilio.png')] bg-cover bg-center rounded-lg shadow-md overflow-hidden group hover:cursor-pointer
+                    transition duration-300 ease-in-out hover:scale-105 hover:shadow-xl">
+          <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-50 transition duration-300 ease-in-out">
+          </div>
+          <div class="relative z-10 flex flex-col items-start text-white text-3xl font-bold p-4">
+            <span class="text-[10px] bg-red-500 py-2 px-4 rounded-lg">Contraentrega</span>
+            <span class="text-xl text-shadow-2xs">Envios a domicilio</span>
+            <span class="text-[12px] text-gray-200">Recoge tu pedido desde casa</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </main>
