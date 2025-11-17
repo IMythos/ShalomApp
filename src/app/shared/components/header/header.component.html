@@ -31,15 +31,26 @@
     </div>
     <div class="flex items-center gap-2">
       <div class="hidden lg:flex items-center gap-2">
-        <button
-          class="text-sm text-[#6A7587] py-2 px-4 border border-[#D2D5DB] rounded-3xl hover:cursor-pointer hover:shadow transition duration-200 ease-in-out">
-          Iniciar Sesion
-        </button>
-        <button
-          class="flex items-center text-sm text-white py-2 px-4 border rounded-3xl bg-[#EE2A2F] hover:cursor-pointer hover:bg-[#ff6267] transition duration-200 ease-in-out">
-          <lucide-icon [img]="UserRoundPlusIcon" [strokeWidth]="1"></lucide-icon>
-          Registrarse
-        </button>
+        @if (isAuthenticated()) {
+          <span class="text-sm text-[#3B485B] py-2 px-3">{{ userDisplayName() }}</span>
+          <button
+            (click)="onLogout()"
+            class="flex gap-2 items-center text-sm text-white py-2 px-4 border rounded-3xl bg-[#EE2A2F] hover:cursor-pointer hover:bg-[#ff6267] transition duration-200 ease-in-out">
+            <lucide-icon [img]="ArrowLeftIcon" strokeWidth="1"></lucide-icon>
+            Cerrar Sesion
+          </button>
+        } @else {
+          <button
+            (click)="onLogin()"
+            class="text-sm text-[#6A7587] py-2 px-4 border border-[#D2D5DB] rounded-3xl hover:cursor-pointer hover:shadow transition duration-200 ease-in-out">
+            Iniciar Sesion
+          </button>
+          <button
+            class="flex items-center text-sm text-white py-2 px-4 border rounded-3xl bg-[#EE2A2F] hover:cursor-pointer hover:bg-[#ff6267] transition duration-200 ease-in-out">
+            <lucide-icon [img]="UserRoundPlusIcon" [strokeWidth]="1"></lucide-icon>
+            Registrarse
+          </button>
+        }
       </div>
       <button class="lg:hidden p-2 rounded-lg hover:cursor-pointer hover:bg-gray-100" (click)="toggleMenu()">
         <lucide-icon [img]="SquareMenuIcon" [strokeWidth]="1" class="w-6 h-6"></lucide-icon>
@@ -82,14 +93,24 @@
       </ul>
     </nav>
     <div class="flex flex-col gap-3 mt-8 pt-6 border-t border-gray-200">
-      <button
-        class="text-sm text-[#6A7587] py-2 px-4 border border-[#D2D5DB] rounded-3xl hover:cursor-pointer hover:shadow transition duration-200 ease-in-out w-full">
-        Iniciar Sesion
-      </button>
-      <button
-        class="text-sm text-white py-2 px-4 border rounded-3xl bg-[#EE2A2F] hover:cursor-pointer hover:bg-[#ff6267] transition duration-200 ease-in-out w-full">
-        Registrarse
-      </button>
+      @if (isAuthenticated()) {
+        <span class="text-sm text-[#3B485B] py-2 px-3">{{ userDisplayName() }}</span>
+        <button
+          (click)="onLogout()"
+          class="text-sm text-white py-2 px-4 border rounded-3xl bg-[#EE2A2F] hover:cursor-pointer hover:bg-[#ff6267] transition duration-200 ease-in-out w-full">
+          <lucide-icon [img]="ArrowLeftIcon" strokeWidth="1"></lucide-icon>
+          Cerrar Sesión
+        </button>
+      } @else {
+        <button
+          class="text-sm text-[#6A7587] py-2 px-4 border border-[#D2D5DB] rounded-3xl hover:cursor-pointer hover:shadow transition duration-200 ease-in-out w-full">
+          Iniciar Sesion
+        </button>
+        <button
+          class="text-sm text-white py-2 px-4 border rounded-3xl bg-[#EE2A2F] hover:cursor-pointer hover:bg-[#ff6267] transition duration-200 ease-in-out w-full">
+          Registrarse
+        </button>
+      }
     </div>
   </div>
 </header>
