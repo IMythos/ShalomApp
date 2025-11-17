@@ -47,21 +47,16 @@
     </div>
   </div>
 </header>
-
 <header class="lg:hidden fixed inset-0 z-40 transition-all duration-300" [class.visible]="isOpen()" [class.invisible]="!isOpen()">
   <div class="fixed inset-0 bg-black transition-opacity duration-300" (click)="toggleMenu()" [class.opacity-30]="isOpen()" [class.opacity-0]="!isOpen()">
   </div>
-
   <div class="fixed top-0 right-0 w-64 h-full bg-white shadow-xl p-5
                transition-transform duration-300 ease-in-out transform" [class.translate-x-0]="isOpen()"
     [class.translate-x-full]="!isOpen()">
-
     <button class="absolute top-4 right-4 p-2 rounded-lg hover:cursor-pointer hover:bg-gray-100" (click)="toggleMenu()">
       <lucide-icon [img]="CircleXIcon" [strokeWidth]="1" class="w-6 h-6"></lucide-icon>
     </button>
-
     <h2 class="text-xl font-bold mb-6 mt-8">¿Que necesitas?</h2>
-
     <nav>
       <ul class="flex flex-col gap-2">
         <li (click)="toggleMenu()"
@@ -86,7 +81,6 @@
         </li>
       </ul>
     </nav>
-
     <div class="flex flex-col gap-3 mt-8 pt-6 border-t border-gray-200">
       <button
         class="text-sm text-[#6A7587] py-2 px-4 border border-[#D2D5DB] rounded-3xl hover:cursor-pointer hover:shadow transition duration-200 ease-in-out w-full">
