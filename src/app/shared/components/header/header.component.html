@@ -41,11 +41,12 @@
           </button>
         } @else {
           <button
-            (click)="onLogin()"
+            routerLink="/login"
             class="text-sm text-[#6A7587] py-2 px-4 border border-[#D2D5DB] rounded-3xl hover:cursor-pointer hover:shadow transition duration-200 ease-in-out">
             Iniciar Sesion
           </button>
           <button
+            routerLink="/register"
             class="flex items-center text-sm text-white py-2 px-4 border rounded-3xl bg-[#EE2A2F] hover:cursor-pointer hover:bg-[#ff6267] transition duration-200 ease-in-out">
             <lucide-icon [img]="UserRoundPlusIcon" [strokeWidth]="1"></lucide-icon>
             Registrarse
@@ -114,3 +115,4 @@
     </div>
   </div>
 </header>
+<app-spinner></app-spinner>

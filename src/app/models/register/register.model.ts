@@ -2,8 +2,8 @@ export interface RegisterRequest {
   username: string;
   email: string;
   password: string;
+  role: 'CLIENT' | 'ADMIN' | 'EMPLOYEE';
   dni?: string;
-  address?: string;
   phone?: string;
-  role: UserVerificationRequirement;
+  address?: string;
 }

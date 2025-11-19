@@ -1,0 +1,13 @@
+@keyframes spin-custom {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.app-spinner-icon {
+  animation: spin-custom 1.75s linear infinite;
+}

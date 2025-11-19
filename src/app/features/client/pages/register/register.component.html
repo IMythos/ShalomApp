@@ -1,0 +1,61 @@
+<div class="min-h-screen flex items-center justify-center">
+    <div class="w-full lg:w-3/5 flex items-center justify-center p-6 sm:p-12 lg:p-20">
+        <div class="max-w-md w-full space-y-8">
+            <div routerLink="/" class="text-gray-500 hover:text-gray-700 transition flex items-center gap-1 text-sm cursor-pointer w-fit">
+                <lucide-icon [img]="ArrowRightIcon" strokeWidth="1"></lucide-icon>
+                Ir al Inicio
+            </div>
+            <h1 class="text-3xl font-bold text-gray-900 mt-6">Registrarse</h1>
+            <p class="text-gray-600 -mt-6 text-sm">Complete el formulario de registro para crear una cuenta.</p>
+            <form class="space-y-4 text-sm" [formGroup]="registerForm" (ngSubmit)="onRegister()">
+                <div>
+                  <label for="username" class="block text-sm font-medium text-gray-700">Username *</label>
+                  <input type="text" id="username" formControlName="username" class="mt-1 w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-[#FE161D] focus:border-[#FE161D]">
+                  </div>
+                <div>
+                  <label for="email" class="block text-sm font-medium text-gray-700">Email *</label>
+                  <input type="email" id="email" formControlName="email" placeholder="email@example.com" class="mt-1 w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-[#FE161D] focus:border-[#FE161D]">
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                  <div>
+                    <label for="password" class="block text-sm font-medium text-gray-700">Password *</label>
+                    <input type="password" id="password" formControlName="password" class="mt-1 w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-[#FE161D] focus:border-[#FE161D]">
+                  </div>
+                  <div>
+                    <label for="role" class="block text-sm font-medium text-gray-700">Rol</label>
+                    <input type="text" id="role" formControlName="role" [disabled]="true" value="CLIENTE" class="mt-1 w-full px-4 py-3 border border-gray-300 rounded-lg bg-gray-100 text-gray-500  hover:cursor-no-drop">
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                  <div>
+                      <label for="dni" class="block text-sm font-medium text-gray-700">DNI</label>
+                      <input type="text" id="dni" formControlName="dni" placeholder="Ej. 44442222" class="mt-1 w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-[#FE161D] focus:border-[#FE161D]">
+                    </div>
+                    <div>
+                      <label for="phone" class="block text-sm font-medium text-gray-700">Celular</label>
+                      <input type="tel" id="phone" formControlName="phone" placeholder="+51 999999999" class="mt-1 w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-[#FE161D] focus:border-[#FE161D]">
+                    </div>
+                </div>
+                <div>
+                  <label for="address" class="block text-sm font-medium text-gray-700">Dirección</label>
+                  <input type="text" id="address" formControlName="address" class="mt-1 w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-[#FE161D] focus:border-[#FE161D]">
+                </div>
+                <button type="submit" [disabled]="registerForm.invalid" class="w-full flex items-center justify-center p-3 text-white bg-[#FE161D] font-semibold rounded-lg hover:bg-red-700 transition duration-300 shadow-lg disabled:bg-red-300 mt-6">
+                    Crear Cuenta
+                </button>
+            </form>
+            <div class="text-center pt-2">
+              <p class="text-sm text-gray-600">
+                ¿Ya tienes una cuenta?
+                <a routerLink="/login" class="text-[#FE161D] font-semibold hover:text-red-700 hover:cursor-pointer transition">
+                  Ingresa aquí
+                </a>
+              </p>
+            </div>
+            <div class="text-center text-xs text-gray-400 pt-10">
+                <p>© 2025. Hecho por Mythos. Todos los derechos reservados</p>
+            </div>
+        </div>
+    </div>
+</div>
+<app-spinner></app-spinner>

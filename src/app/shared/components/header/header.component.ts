@@ -1,12 +1,13 @@
 import { Component, inject, Signal, signal } from "@angular/core";
 import { LucideAngularModule, House, Search, MapPin, ClipboardList, SquareMenu, CircleX, UserRoundPlus, ArrowLeft } from "lucide-angular";
 import { AuthService } from "../../../core/services/auth.service";
-import { Router } from "@angular/router";
-
+import { Router, RouterLink } from "@angular/router";
+import { LoadingService } from "../../../core/services/loading.service";
+import { SpinnerComponent } from "../spinner/spinner.component";
 @Component({
   selector: 'client-header',
   standalone: true,
-  imports: [LucideAngularModule],
+  imports: [LucideAngularModule, RouterLink, SpinnerComponent],
   templateUrl: 'header.component.html'
 })
 
@@ -25,6 +26,7 @@ export class HeaderComponent {
 
   // Services
   private authService = inject(AuthService);
+  private loadingService = inject(LoadingService);
   private router = inject(Router);
 
   // Signals
@@ -45,7 +47,9 @@ export class HeaderComponent {
   }
 
   onLogout(): void {
+    this.loadingService.loadingOn();
     this.authService.logout();
+    setTimeout(() => this.loadingService.loadingOff(), 2000);
     this.router.navigate(['/']);
     this.isOpen.set(false);
   }
