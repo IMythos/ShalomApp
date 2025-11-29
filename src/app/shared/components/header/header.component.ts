@@ -4,6 +4,7 @@ import { AuthService } from "../../../core/services/auth.service";
 import { Router, RouterLink } from "@angular/router";
 import { LoadingService } from "../../../core/services/loading.service";
 import { SpinnerComponent } from "../spinner/spinner.component";
+import { AuthModalService } from "../../../core/services/auth-modal.service";
 @Component({
   selector: 'client-header',
   standalone: true,
@@ -26,6 +27,7 @@ export class HeaderComponent {
 
   // Services
   private authService = inject(AuthService);
+  private modalService = inject(AuthModalService);
   private loadingService = inject(LoadingService);
   private router = inject(Router);
 
@@ -56,6 +58,16 @@ export class HeaderComponent {
 
   onRegister(): void {
     this.router.navigate(['/register']);
+    this.isOpen.set(false);
+  }
+
+  handleProtectedRoute(path: string) {
+    if (this.authService.isAuthenticated()) {
+      this.router.navigate([path]);
+    } else {
+      this.modalService.open();
+    }
+
     this.isOpen.set(false);
   }
 }

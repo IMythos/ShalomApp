@@ -7,6 +7,7 @@
       <h2 class="text-lg sm:text-xl mb-4 lg:mb-6">Somos tu aliado estratégico para tus envíos, solicita uno ahora.</h2>
 
       <button
+        (click)="handleSolicitarEnvio()"
         class="flex items-center gap-1 text-sm text-white py-3 px-5 rounded-3xl bg-[#EE2A2F] hover:cursor-pointer hover:bg-[#ff6267] transition duration-200 ease-in-out">
           Solicitar Envío
           <lucide-icon [img]="ArrowRightIcon" [strokeWidth]="1"></lucide-icon>

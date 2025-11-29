@@ -3,10 +3,11 @@ import { HeaderComponent } from "../../../../shared/components/header/header.com
 import { BannerComponent } from "./banner/banner.component";
 import { LucideAngularModule, ArrowRight } from "lucide-angular";
 import { FooterComponent } from "./footer/footer.component";
+import { AuthModalComponent } from "../../../../shared/components/auth-modal/auth-modal.component";
 
 @Component({
   selector: 'client-home',
-  imports: [HeaderComponent, BannerComponent, LucideAngularModule, FooterComponent],
+  imports: [HeaderComponent, BannerComponent, LucideAngularModule, FooterComponent, AuthModalComponent],
   styleUrl: 'home.component.css',
   templateUrl: 'home.component.html',
 })

@@ -1,0 +1,25 @@
+@if (modalService.isOpen()) {
+<div class="fixed inset-0 backdrop-blur bg-opacity-50 z-50 flex justify-center items-center p-4">
+  <div class="bg-white rounded-lg shadow-2xl p-6 sm:p-8 max-w-sm w-full text-center">
+    <h3 class="text-xl font-bold text-gray-900 mb-3">
+      Inicia Sesión para Continuar
+    </h3>
+    <p class="text-gray-600 mb-6">
+      Necesitas iniciar sesión o registrarte para acceder a esta función.
+    </p>
+    <div class="flex flex-col gap-3">
+      <button routerLink="/login"
+        class="text-white py-2 px-4 rounded-3xl bg-[#EE2A2F] hover:bg-[#ff6267] transition duration-200">
+        Iniciar Sesión
+      </button>
+      <button (click)="navigateTo('/register')"
+        class="text-[#3B485B] py-2 px-4 rounded-3xl border border-[#D2D5DB] hover:bg-gray-100 transition duration-200">
+        Registrarse
+      </button>
+      <button (click)="modalService.close()" class="text-gray-500 text-sm mt-2 hover:text-gray-700">
+        Cerrar
+      </button>
+    </div>
+  </div>
+</div>
+}
