@@ -1,4 +1,8 @@
+import { LucideIconData } from "lucide-angular";
+
 export interface MenuItem {
+  id: number,
+  icon: LucideIconData
   label: string;
-  route: string;
+  component: any;
 }

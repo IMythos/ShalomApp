@@ -1,1 +1,8 @@
-<p>admin works!</p>
+<div class="flex">
+  <dashboard-sidebar (selectComponent)="onSelect($event)"></dashboard-sidebar>
+  <main class="flex-1 p-6">
+    @if (selectComponent()) {
+      <ng-container *ngComponentOutlet="selectComponent()"></ng-container>
+    }
+  </main>
+</div>
