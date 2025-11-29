@@ -4,7 +4,7 @@ import { LoginComponent } from './features/client/pages/login/login.component';
 import { RegisterComponent } from './features/client/pages/register/register.component';
 import { TrackingComponent } from './features/client/pages/shipment-tracking/tracking.component';
 import { ShipmentForm } from './features/client/pages/shipment-form/shipment-form';
-import { roleGuard } from './core/guards/role-guard';
+import { roleGuard } from './core/guards/role-guard.guard';
 import { UnauthorizedComponent } from './shared/components/unauthorized/unauthorized.component';
 
 export const routes: Routes = [
@@ -14,13 +14,26 @@ export const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'shipment-tracking', component: TrackingComponent },
   { path: 'shipment-form', component: ShipmentForm },
-
-  // RUTAS PROTEGIDAS
   {
-    path: 'admin-panel',
-    canActivate: [roleGuard],
-    data: { allowedRoles: ['ADMIN'] },
-    loadComponent: () => import('./features/admin/pages/admin-home/admin-home.component').then(m => m.AdminHomeComponent)
+    path: 'dashboard-login',
+    loadComponent: () => import('./shared/dashboard/dashboard-login/dashboard-login.component').then(m => m.DashboardLoginComponent)
+  },
+  {
+    path: 'dashboard',
+    children: [
+      {
+        path: 'admin',
+        canActivate: [roleGuard],
+        data: { allowedRoles: ['ADMIN'] },
+        loadComponent: () => import('./features/admin/pages/admin-home/admin-home.component').then(m => m.AdminHomeComponent)
+      },
+      {
+        path: 'employee',
+        canActivate: [roleGuard],
+        data: { allowedRoles: ['EMPLOYEE'] },
+        loadComponent: () => import('./features/employee/pages/employee-home/employee-home.component').then(m => m.EmployeeHomeComponent)
+      }
+    ]
   },
 
   // RUTA NO AUTORIZADA

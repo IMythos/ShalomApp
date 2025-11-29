@@ -6,13 +6,15 @@ export const roleGuard: CanActivateFn = (route, state) => {
   const authService = inject(AuthService);
   const router = inject(Router);
 
-  if (!authService.isAuthenticated()) {
-    console.log('RoleGuard: Usuario no autenticado, redirigiendo a /login');
-    return router.createUrlTree(['/login']);
-  }
-
   const allowedRoles: string[] = route.data['allowedRoles'];
   const userRole = authService.getUserRole();
+
+  const isDashboardRoute = route.url[0]?.path === 'dashboard';
+
+  if (!authService.isAuthenticated()) {
+    console.log('RoleGuard: Usuario no autenticado. Defina sus credenciales con el adminstrador del sistema o registro libre.');
+    return router.createUrlTree(isDashboardRoute ? ['/dashboard-login'] : ['/login']);
+  }
 
   if (!allowedRoles || allowedRoles.length === 0) {
     console.warn('RoleGuard: La ruta no especificó allowedRoles. Acceso concedido por defecto.');

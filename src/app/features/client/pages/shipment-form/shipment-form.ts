@@ -5,6 +5,9 @@ import { AuthService } from '../../../../core/services/auth.service';
 import { SolicitudeService } from '../../services/solicitude.service';
 import { SolicitudeRequest } from '../../../../models/solicitude/solicitude-request.model';
 import { SolicitudeResponseData } from '../../../../models/solicitude/solicitude-response.model';
+import { AgencyResponseData } from '../../../../models/agency/agency-response.model';
+import { AgencyService } from '../../services/agency.service';
+import { AgencyResponse } from '../../../../shared/interfaces/agency-response';
 
 @Component({
   selector: 'shipment-form',
@@ -12,20 +15,20 @@ import { SolicitudeResponseData } from '../../../../models/solicitude/solicitude
   templateUrl: './shipment-form.html',
   styleUrl: './shipment-form.css',
 })
-export class ShipmentForm {
+export class ShipmentForm implements OnInit {
   private fb = inject(FormBuilder);
   public authService = inject(AuthService);
   private solicitudeService = inject(SolicitudeService);
+  private agenciesService = inject(AgencyService);
 
-  // CIUDADES MOCK
-  public availableCities: string[] = ['Lima', 'Arequipa', 'Cusco', 'Trujillo', 'Piura', 'Iquitos'];
+  public availableAgencies: AgencyResponseData[] = [];
 
-  // ESTADO DEL FORMULARIO DE CREACIÓN
   public solicitudeForm: FormGroup;
   public packageImageFile: WritableSignal<File | null> = signal(null);
   public solicitudeList: WritableSignal<SolicitudeResponseData[]> = signal([]);
   public packageImageError: WritableSignal<string> = signal('');
   public loading = signal(false);
+  public loadingAgencies = signal(false);
   public errorMessage = signal('');
   public successMessage = signal('');
 
@@ -39,6 +42,24 @@ export class ShipmentForm {
     });
 
     this.loadSolicitudes();
+  }
+
+  ngOnInit(): void {
+    this.loadAgencies();
+  }
+
+  loadAgencies() {
+    this.loadingAgencies.set(true);
+    this.agenciesService.listAgencies().subscribe({
+      next: (agencies) => {
+        this.availableAgencies = agencies.data ?? [];
+        this.loadingAgencies.set(false);
+      },
+      error: (err) => {
+        console.error('Error cargando agencias.', err);
+        this.loadingAgencies.set(false);
+      }
+    })
   }
 
   getControl(name: string): AbstractControl | null {

@@ -1,0 +1,52 @@
+<div class="min-h-screen flex justify-center">
+  <div class="w-full lg:w-3/5 flex items-center justify-center p-6 sm:p-12 lg:p-20">
+    <div class="max-w-md w-full space-y-8">
+      <h1 class="text-3xl font-bold text-gray-900 mt-6">Iniciar Sesión</h1>
+      <p class="text-[14px] text-gray-600 -mt-6">Ingrese sus credenciales de acceso al sistema.</p>
+      <form class="space-y-4" [formGroup]="loginForm" (ngSubmit)="onLoginDashboard()">
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-700">Email *</label>
+          <input type="email" id="email" placeholder="email@example.com" formControlName="email"
+            class="mt-1 w-full px-4 py-3 border border-gray-300 rounded-lg placeholder-gray-400 focus:ring-[#FE161D] focus:border-[#FE161D]">
+          @if (loginForm.get('email')?.invalid && loginForm.get('email')?.touched) {
+            <p class="mt-1 text-sm text-red-600">
+              @if (loginForm.get('email')?.errors?.['required']) {
+                El email es obligatorio.
+              } @else if (loginForm.get('email')?.errors?.['email']) {
+                Formato de email inválido.
+              }
+            </p>
+          }
+        </div>
+        <div>
+          <label for="password" class="block text-sm font-medium text-gray-700">Password *</label>
+          <input type="password" id="password" placeholder="Minimo de 6 caracteres" formControlName="password"
+            class="mt-1 w-full px-4 py-3 border border-gray-300 rounded-lg placeholder-gray-400 focus:ring-[#FE161D] focus:border-[#FE161D]">
+          <p class="mt-1 text-xs text-gray-500">Mínimo de 6 caracteres</p>
+          @if (loginForm.get('password')?.invalid && loginForm.get('password')?.touched) {
+          <p class="mt-1 text-sm text-red-600">
+            @if (loginForm.get('password')?.errors?.['required']) {
+              La contraseña es obligatoria.
+            } @else if (loginForm.get('password')?.errors?.['minlength']) {
+              La contraseña debe tener al menos 6 caracteres.
+            }
+          </p>
+          }
+        </div>
+        <button type="submit" [disabled]="loginForm.invalid"
+          class="w-full flex items-center justify-center p-3 text-white bg-[#FE161D] font-semibold rounded-lg hover:bg-red-700 transition duration-300 shadow-lg disabled:bg-red-300">
+          Iniciar Sesión
+        </button>
+      </form>
+      @if (errorMessage) {
+        <div class="p-3 bg-red-100 border border-red-400 text-red-700 rounded-lg text-sm" role="alert">
+          {{ errorMessage }}
+        </div>
+      }
+      <div class="text-center text-xs text-gray-400 pt-10">
+        <p>© 2025. Shalom S.A.C. Todos los derechos reservados</p>
+      </div>
+    </div>
+  </div>
+</div>
+<app-spinner></app-spinner>
