@@ -1,8 +1,10 @@
 <div class="flex">
   <dashboard-sidebar (selectComponent)="onSelect($event)"></dashboard-sidebar>
-  <main class="flex-1 p-6">
+  <main class="flex-1 h-screen overflow-y-auto">
     @if (selectComponent()) {
       <ng-container *ngComponentOutlet="selectComponent()"></ng-container>
+    } @else {
+      <admin-dashboard></admin-dashboard>
     }
   </main>
 </div>

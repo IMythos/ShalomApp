@@ -1,8 +1,11 @@
 import { UserRole } from "../roles/user-role";
 
-export interface UserResponse {
+export interface UserResponseData {
   id: number;
   username: string;
+  firstname: string;
+  lastname: string;
+  fullname: string;
   email: string;
   role: UserRole;
   dni: string;
